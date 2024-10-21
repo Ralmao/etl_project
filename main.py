@@ -1,20 +1,25 @@
 from extract import extract_data
 from transform import transform_data
 from load import load_data
+import os
+from dotenv import load_dotenv
+
+# Cargar las variables del archivo .env
+load_dotenv()
 
 # Información de conexión a la base de datos de origen y destino
 db_info_origen = {
-    'host': '18.218.174.15',
-    'user': 'querys',
-    'password': '36690719',
-    'database': 'db_dc'
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME')
 }
 
 db_info_destino = {
-    'host': '18.218.174.15',
-    'user': 'querys',
-    'password': '36690719',
-    'database': 'querys'
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME2')
 }
 
 # Consulta para la extracción de datos
@@ -30,3 +35,4 @@ if __name__ == "__main__":
     
     # Carga
     load_data(df_clean, db_info_destino, 'transformed_autoparts')
+
