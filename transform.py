@@ -18,10 +18,10 @@ def transform_data(df):
     df_clean['id_cat_autopart_model'] = df_clean['id_cat_autopart_model'].fillna(0)
     df_clean['id_cat_autopart_make'] = df_clean['id_cat_autopart_make'].fillna(0)
 
-    # Convertir formatos de fecha
-    df_clean['create_date'] = pd.to_datetime(df_clean['create_date']).dt.strftime('%Y-%m-%d %H:%M:%S')
+    # Convertir formatos de fecha de venezuela en caso de que sea necesario
+    #df_clean['create_date'] = pd.to_datetime(df_clean['create_date']).dt.strftime('%Y-%m-%d %H:%M:%S')
 
-    # Volver a convertir a datetime
+    # Convertir a datetime
     df_clean['create_date'] = pd.to_datetime(df_clean['create_date'])
 
     return df_clean
