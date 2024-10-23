@@ -7,4 +7,5 @@ Este proyecto realiza la extracción, transformación y carga (ETL) de datos de 
    pip install -r requirements.txt
    
 2. Ejecucion:
+   ```bash
    python main.py
