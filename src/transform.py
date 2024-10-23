@@ -8,7 +8,8 @@ def transform_data(df):
     df_clean = df.drop(df_drop, axis=1)
 
     # Rellenar valores por los mas cercanos y convertimos a enteros la columna year_from
-    df_clean['year_from'].fillna(method='bfill', inplace=True)
+    #df_clean['year_from'].fillna(method='bfill', inplace=True)
+    df_clean['year_from'] = df_clean['year_from'].bfill()
     df_clean['year_from'] = df_clean['year_from'].astype(int)
 
     # Se sustituyen los valores faltantes por valores que no existen en las columnas en este caso se les da un valor de 0

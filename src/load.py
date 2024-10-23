@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from extract import get_connection_string  # Importar la función desde extract.py
+from .extract import get_connection_string  # Importar la función desde extract.py
 
 def load_data(df, db_info, table_name):
     """Carga los datos transformados en la base de datos de destino."""

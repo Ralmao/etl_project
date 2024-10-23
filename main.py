@@ -1,6 +1,7 @@
-from extract import extract_data
-from transform import transform_data
-from load import load_data
+from src.extract import extract_data
+from src.transform import transform_data
+from src.load import load_data
+from src.describe_to_sql import process_describe_to_postgres
 import os
 from dotenv import load_dotenv
 
@@ -36,3 +37,8 @@ if __name__ == "__main__":
     # Carga
     load_data(df_clean, db_info_destino, 'transformed_autoparts')
 
+    # Cargar estadísticas de df_clean.describe() a PostgreSQL
+    df_clean_desc = process_describe_to_postgres(df_clean, db_info_destino)
+
+    # Mostrar las estadísticas por consola
+    print("Estadísticas del DataFrame transformado:\n", df_clean_desc)
